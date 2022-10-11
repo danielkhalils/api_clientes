@@ -47,7 +47,7 @@ public class ClienteController {
                     repository.delete(cliente);
                     return Void.TYPE;
                 })
-                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não localizado"));
     }
 
     //atualizar cliente
@@ -60,6 +60,6 @@ public class ClienteController {
                     clienteAtualizado.setId(cliente.getId());
                     return repository.save(clienteAtualizado);
                 })
-                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND,  "Cliente não localizado"));
     }
 }
